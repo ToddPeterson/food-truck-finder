@@ -1,15 +1,40 @@
 <template>
     <div class="wrap">
-        <form class="login" @submit.prevent="login">
-            <h2>Sign in</h2>
+        <form @submit.prevent="createUser">
+            <h2>New Vendor</h2>
+            <label>Vendor Name</label>
+            <input
+                required
+                v-model="vendorName"
+                type="text"
+                name="name"
+                id="name"
+            />
             <label>Email</label>
-            <input required v-model="email" type="text" />
+            <input
+                required
+                v-model="email"
+                type="email"
+                name="email"
+                id="email"
+            />
             <label>Password</label>
-            <input required v-model="password" type="password" />
+            <input
+                required
+                v-model="password"
+                type="password"
+                name="password"
+                id="password"
+            />
+            <label>Confirm Password</label>
+            <input
+                required
+                v-model="confPassword"
+                type="password"
+                name="confirmpassword"
+                id="confirmpassword"
+            />
             <div class="row button-row">
-                <router-link :to="{ name: 'createvendor' }"
-                    >Create an account</router-link
-                >
                 <button type="submit">Submit</button>
             </div>
         </form>
@@ -18,21 +43,21 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
-import { AUTH_REQUEST } from "@/store/actions/auth";
-import { UserCredentials } from "@/store/modules/user";
 
 @Options({})
-export default class Login extends Vue {
+export default class CreateVendor extends Vue {
+    private vendorName = "";
     private email = "";
     private password = "";
+    private confPassword = "";
 
-    login() {
-        const user: UserCredentials = {
-            email: this.email,
-            password: this.password
-        };
-        this.$store.dispatch(AUTH_REQUEST, user);
-        console.log("Log in submitted");
+    createUser() {
+        console.log("Create User");
+        if (this.password === this.confPassword) {
+            console.log("validated");
+        } else {
+            console.log("invalid");
+        }
     }
 }
 </script>
@@ -45,12 +70,12 @@ export default class Login extends Vue {
     justify-content: center;
 }
 
-.login {
+form {
     background: #eae2b7;
     padding: 3rem;
 }
 
-.login h2 {
+form h2 {
     font-weight: 900;
     font-size: 2em;
     letter-spacing: 1px;
@@ -58,7 +83,7 @@ export default class Login extends Vue {
     margin-bottom: 1em;
 }
 
-.login label {
+form label {
     display: block;
     font-weight: 800;
     text-transform: uppercase;
@@ -66,7 +91,7 @@ export default class Login extends Vue {
     font-size: 1.1em;
 }
 
-.login input {
+form input {
     display: block;
     width: 400px;
     height: 40px;
@@ -79,7 +104,7 @@ export default class Login extends Vue {
     color: #2b2b2b;
 }
 
-.login button {
+form button {
     font-family: "Nunito Sans", sans-serif;
     border: none;
     background: #003049;
@@ -93,7 +118,7 @@ export default class Login extends Vue {
     transition: all 0.3s;
 }
 
-.login button:hover {
+form button:hover {
     background: #0f6fa3;
     color: #f5b556;
 }
@@ -106,17 +131,5 @@ export default class Login extends Vue {
     display: flex;
     justify-content: right;
     align-items: flex-end;
-}
-
-.button-row a,
-.button-row a:visited {
-    margin-right: 2em;
-    color: #003049;
-    transition: color 0.3s;
-}
-
-.button-row a:hover,
-.button-row a:visited:hover {
-    color: #1478ad;
 }
 </style>

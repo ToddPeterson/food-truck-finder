@@ -5,25 +5,31 @@ var Home_vue_1 = require("../views/Home.vue");
 var routes = [
     {
         path: "/",
-        name: "Home",
+        name: "home",
         component: Home_vue_1["default"]
     },
     {
         path: "/about",
-        name: "About",
+        name: "about",
         // route level code-splitting
         // this generates a separate chunk (about.[hash].js) for this route
         // which is lazy-loaded when the route is visited.
-        component: function () {
-            return Promise.resolve().then(function () { return require(/* webpackChunkName: "about" */ "../views/About.vue"); });
-        }
+        component: function () { return Promise.resolve().then(function () { return require("../views/About.vue"); }); }
     },
     {
-        path: "/login",
-        name: "Login",
-        component: function () {
-            return Promise.resolve().then(function () { return require(/* webpackChunkName: "about" */ "../views/Login.vue"); });
-        }
+        path: "/vendor",
+        name: "vendor",
+        component: function () { return Promise.resolve().then(function () { return require("../views/Vendor.vue"); }); }
+    },
+    {
+        path: "/vendor/login",
+        name: "login",
+        component: function () { return Promise.resolve().then(function () { return require("../views/Login.vue"); }); }
+    },
+    {
+        path: "/vendor/create",
+        name: "createvendor",
+        component: function () { return Promise.resolve().then(function () { return require("../views/CreateVendor.vue"); }); }
     }
 ];
 var router = vue_router_1.createRouter({

@@ -2,10 +2,12 @@
     <div class="nav">
         <div class="container">
             <div class="logo">
-                <router-link to="/">Idaho Food Trucks</router-link>
+                <router-link :to="{ name: 'home' }"
+                    >Idaho Food Trucks</router-link
+                >
             </div>
             <div class="nav-links">
-                <router-link to="/login">Login</router-link>
+                <router-link :to="{ name: 'login' }">Login</router-link>
             </div>
         </div>
     </div>
