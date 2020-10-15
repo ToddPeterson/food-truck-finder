@@ -1,10 +1,12 @@
 <template>
     <div class="nav">
-        <div class="logo">
-            <router-link to="/">Idaho Food Trucks</router-link>
-        </div>
-        <div class="nav-links">
-            <router-link to="/login">Login</router-link>
+        <div class="container">
+            <div class="logo">
+                <router-link to="/">Idaho Food Trucks</router-link>
+            </div>
+            <div class="nav-links">
+                <router-link to="/login">Login</router-link>
+            </div>
         </div>
     </div>
 </template>
@@ -21,7 +23,14 @@ export default class Navbar extends Vue {}
     background: #003049;
     position: relative;
     width: 100%;
-    padding: 1rem 0;
+    padding: 0.6rem 0;
+}
+.container {
+    width: 100%;
+    padding: 0 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .nav a {
@@ -40,16 +49,13 @@ export default class Navbar extends Vue {}
 }
 
 .logo a {
-    margin-left: 5rem;
-    font-size: 1.2em;
-    font-weight: 600;
+    font-size: 1.6em;
+    font-weight: 900;
     letter-spacing: 1px;
 }
 
 .nav-links {
     display: inline-block;
-    position: absolute;
-    right: 5rem;
 }
 
 .nav-links a {

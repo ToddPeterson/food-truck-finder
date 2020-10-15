@@ -1,12 +1,11 @@
 <template>
-    <div>
+    <div class="wrap">
         <form class="login" @submit.prevent="login">
             <h1>Sign in</h1>
             <label>Email</label>
             <input required v-model="email" type="text" />
             <label>Password</label>
             <input required v-model="password" type="password" />
-            <hr />
             <button type="submit">Submit</button>
         </form>
     </div>
@@ -33,4 +32,9 @@ export default class Login extends Vue {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.wrap {
+    width: 100%;
+    padding-top: 5rem;
+}
+</style>
