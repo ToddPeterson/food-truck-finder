@@ -43,6 +43,8 @@
 
 <script lang="ts">
 import { Options, Vue } from "vue-class-component";
+import { VendorCredentials } from "@/store/modules/user";
+import { USER_CREATE } from "@/store/actions/user";
 
 @Options({})
 export default class CreateVendor extends Vue {
@@ -54,9 +56,16 @@ export default class CreateVendor extends Vue {
     createUser() {
         console.log("Create User");
         if (this.password === this.confPassword) {
-            console.log("validated");
+            const vendor: VendorCredentials = {
+                name: this.vendorName,
+                email: this.email,
+                password: this.password
+            };
+            this.$store.dispatch(USER_CREATE, vendor).then(() => {
+                this.$router.push({ name: "login" });
+            });
         } else {
-            console.log("invalid");
+            console.log("passwords don't match");
         }
     }
 }
