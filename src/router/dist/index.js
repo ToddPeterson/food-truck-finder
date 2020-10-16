@@ -28,8 +28,13 @@ var routes = [
     },
     {
         path: "/vendor/create",
-        name: "createvendor",
+        name: "create_vendor",
         component: function () { return Promise.resolve().then(function () { return require("../views/CreateVendor.vue"); }); }
+    },
+    {
+        path: "/vendor/me",
+        name: "vendor_detail",
+        component: function () { return Promise.resolve().then(function () { return require("../views/VendorDetail.vue"); }); }
     }
 ];
 var router = vue_router_1.createRouter({

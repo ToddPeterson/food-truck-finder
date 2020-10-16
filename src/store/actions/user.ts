@@ -1,3 +1,6 @@
 export const USER_CREATE = "USER_CREATE";
 export const USER_CREATE_SUCCESS = "USER_CREATE_SUCCESS";
 export const USER_CREATE_ERROR = "USER_CREATE_ERROR";
+export const USER_REQUEST = "USER_REQUEST";
+export const USER_SUCCESS = "USER_SUCCESS";
+export const USER_ERROR = "USER_ERROR";

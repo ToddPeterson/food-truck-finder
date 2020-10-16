@@ -3,7 +3,15 @@ var _a, _b;
 exports.__esModule = true;
 var axios_1 = require("axios");
 var auth_1 = require("../actions/auth");
+var user_1 = require("../actions/user");
 var AUTH_URL = "http://localhost:8000/api/user/token/";
+function setAuthToken(token) {
+    axios_1["default"].defaults.headers.common["Authorization"] = "";
+    delete axios_1["default"].defaults.headers.common["Authorization"];
+    if (token) {
+        axios_1["default"].defaults.headers.common["Authorization"] = "Token " + token;
+    }
+}
 var state = {
     token: localStorage.getItem("user-token") || "",
     status: ""
@@ -22,7 +30,9 @@ var actions = (_a = {},
                 .then(function (resp) {
                 var token = resp.data.token;
                 localStorage.setItem("user-token", token);
+                setAuthToken(token);
                 commit(auth_1.AUTH_SUCCESS, token);
+                dispatch(user_1.USER_REQUEST);
                 resolve(resp);
             })["catch"](function (err) {
                 commit(auth_1.AUTH_ERROR, err);

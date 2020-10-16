@@ -7,7 +7,7 @@
             <label>Password</label>
             <input required v-model="password" type="password" />
             <div class="row button-row">
-                <router-link :to="{ name: 'createvendor' }"
+                <router-link :to="{ name: 'create_vendor' }"
                     >Create an account</router-link
                 >
                 <button type="submit">Submit</button>
@@ -31,7 +31,9 @@ export default class Login extends Vue {
             email: this.email,
             password: this.password
         };
-        this.$store.dispatch(AUTH_REQUEST, user);
+        this.$store.dispatch(AUTH_REQUEST, user).then(() => {
+            this.$router.push({ name: "vendor_detail" });
+        });
         console.log("Log in submitted");
     }
 }
